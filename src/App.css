@@ -21,7 +21,7 @@ main {
 }
 
 .main-part {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 100%;
   border-radius: 8px;
 }
@@ -29,6 +29,7 @@ main {
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: left;
 }
 
 thead tr th {
@@ -40,7 +41,8 @@ tbody tr td {
   padding: 24px;
 }
 
-th, tr {
+th,
+tr {
   border: none;
 }
 
@@ -51,5 +53,29 @@ td {
 
 tr th,
 tr td {
-  border-bottom: 1px solid #eaf0fa;
+  border-bottom: 1px solid #EAF0FA;
+}
+
+.grade {
+  height: 26px;
+  display: inline-block;
+  padding: 3px 6px 1px 6px;
+  border-radius: 4px;
+}
+
+.grade-excellent {
+  color: #00A775;
+  background-color: #DBF8EF;
+  border: 1px solid #00A775;
+}
+
+.grade-good {
+  background-color: #D8E4FB;
+  border: 1px solid #ADBFDF;
+}
+
+.grade-bad {
+  color: #EA1A4F;
+  background-color: #FEE9EF;
+  border: 1px solid #EA1A4F;
 }
