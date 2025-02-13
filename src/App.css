@@ -20,10 +20,24 @@ main {
   justify-content: space-between;
 }
 
+.block-with-down-arrow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
 .main-part {
   background-color: #ffffff;
   width: 100%;
   border-radius: 8px;
+}
+
+.duration-text {
+  padding-right: 10px;
 }
 
 table {
@@ -53,7 +67,7 @@ td {
 
 tr th,
 tr td {
-  border-bottom: 1px solid #EAF0FA;
+  border-bottom: 1px solid #eaf0fa;
 }
 
 .grade {
@@ -64,18 +78,18 @@ tr td {
 }
 
 .grade-excellent {
-  color: #00A775;
-  background-color: #DBF8EF;
-  border: 1px solid #00A775;
+  color: #00a775;
+  background-color: #dbf8ef;
+  border: 1px solid #00a775;
 }
 
 .grade-good {
-  background-color: #D8E4FB;
-  border: 1px solid #ADBFDF;
+  background-color: #d8e4fb;
+  border: 1px solid #adbfdf;
 }
 
 .grade-bad {
-  color: #EA1A4F;
-  background-color: #FEE9EF;
-  border: 1px solid #EA1A4F;
+  color: #ea1a4f;
+  background-color: #fee9ef;
+  border: 1px solid #ea1a4f;
 }

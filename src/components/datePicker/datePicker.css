@@ -1,0 +1,136 @@
+.date-picker {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.date-menu {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  background-color: #ffffff;
+  border: 1px solid #eaf0fa;
+  border-radius: 4px;
+  z-index: 1;
+  width: 204px;
+  height: auto;
+  text-align: left;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.date-text {
+  padding: 5px 20px;
+  cursor: auto;
+}
+
+.date-menu input {
+  margin: 5px 0;
+  border: none;
+}
+
+.calendar {
+  display: flex;
+  gap: 8px;
+  color: #005ff8;
+  align-items: center;
+}
+
+.calendar-arrows {
+  width: 120px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.calendar svg path {
+  transition: fill 0.3s ease;
+}
+
+.date-menu li {
+  display: block;
+  padding: 12px 20px;
+}
+
+.date-menu a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.calendar svg path {
+  transition: fill 0.3s ease;
+}
+
+.date-input-wrapper {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+}
+
+.custom-date {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  outline: none;
+  padding: 10px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.date-label {
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.custom-date:focus + .date-label,
+.custom-date:not(:placeholder-shown) + .date-label {
+  top: -10px;
+  left: 0;
+  color: #adbfdf;
+  font-size: 0.8em;
+  opacity: 1;
+}
+
+.date-dash {
+  color: #adbfdf;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
+
+.custom-date::-webkit-inner-spin-button,
+.custom-date::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.calendar-button {
+  padding: 0;
+}
+
+@media (hover: hover) {
+  .calendar svg:hover path {
+    fill: #005ff8;
+  }
+
+  .date-menu li:hover {
+    background-color: #dee4fe;
+  }
+}

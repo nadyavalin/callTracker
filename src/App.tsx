@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react";
 import { useFetchCallList } from "./api/api";
 import { CallListResponse } from "./types";
-import { incomingCallsArrow, outgoingCallsArrow } from "./components/svg";
+import {
+  DownArrow,
+  incomingCallsArrow,
+  LeftArrow,
+  outgoingCallsArrow,
+  RightArrow,
+} from "./components/svg";
 import "./App.css";
+import DatePicker from "./components/datePicker/datePicker";
 
 function App() {
+  const [dateStart, setDateStart] = useState<string>("2025-01-01");
+  const [dateEnd, setDateEnd] = useState<string>("2025-01-04");
   const { data, loading, error } = useFetchCallList(
-    "2025-01-01",
-    "2025-01-04",
+    dateStart,
+    dateEnd,
     "both"
   ) as { data: CallListResponse; loading: boolean; error: string | null };
 
   const [grades, setGrades] = useState<{ [key: number]: string }>({});
 
-  const formatPhoneNumber = (phone: string) => {
+  const formatPhoneNumber = (phone: string): string => {
     if (phone.length !== 11 || phone[0] !== "7") {
       return phone;
     }
@@ -23,12 +32,12 @@ function App() {
     )}-${phone.slice(9)}`;
   };
 
-  const getRandomGrade = () => {
+  const getRandomGrade = (): string => {
     const gradesArray = ["Отлично", "Хорошо", "Плохо"];
     return gradesArray[Math.floor(Math.random() * gradesArray.length)];
   };
 
-  const getGradeClass = (grade: string) => {
+  const getGradeClass = (grade: string): string => {
     switch (grade) {
       case "Отлично":
         return "grade-excellent";
@@ -41,13 +50,18 @@ function App() {
     }
   };
 
-  const formatDuration = (duration: number) => {
+  const formatDuration = (duration: number): string => {
     const minutes = Math.floor(duration / 60);
     const seconds = duration % 60;
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
       2,
       "0"
     )}`;
+  };
+
+  const handleDateChange = (start: string, end: string): void => {
+    setDateStart(start);
+    setDateEnd(end);
   };
 
   useEffect(() => {
@@ -64,8 +78,14 @@ function App() {
     <>
       <main>
         <div className="title-font head-part">
-          <div>Все типы</div>
-          <div>3 дня</div>
+          <div className="block-with-down-arrow">
+            Все типы <DownArrow />
+          </div>
+          <div className="calendar-arrows">
+            <LeftArrow />
+            <DatePicker onDateChange={handleDateChange} />
+            <RightArrow />
+          </div>
         </div>
 
         <div className="title-font main-part">
@@ -76,12 +96,17 @@ function App() {
               <thead>
                 <tr>
                   <th>Тип</th>
-                  <th>Время</th>
+                  <th className="block-with-down-arrow">
+                    Время <DownArrow />
+                  </th>
                   <th>Сотрудник</th>
                   <th>Звонок</th>
                   <th>Источник</th>
                   <th>Оценка</th>
-                  <th>Длительность</th>
+                  <th className="align-right">
+                    <span className="duration-text">Длительность</span>
+                    <DownArrow />
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -121,7 +146,9 @@ function App() {
                           {grade}
                         </span>
                       </td>
-                      <td>{formatDuration(call.duration)}</td>
+                      <td className="align-right">
+                        {formatDuration(call.duration)}
+                      </td>
                     </tr>
                   );
                 })}
